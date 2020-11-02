@@ -1,0 +1,33 @@
+.background{
+	-fx-background-color: WHITE;
+}
+.button{
+	-fx-background-color: darkcyan; -fx-text-fill: white;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+.label{
+	-fx-text-fill: black;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#tabpane{
+	-fx-tab-min-height: 5em;
+	-fx-tab-max-height: 5em;
+
+	-fx-tab-min-width: 0.5em;
+	-fx-tab-max-width: 0.5em;
+}
+.tab .tab-label{
+	-fx-background-color: transparent;
+	-fx-alignment: center;
+}
+.tab:selected{
+	-fx-background-color: transparent;
+	-fx-background-radius: 0;
+	-fx-background-insets: 0;
+	-fx-border-width: 5 0 0 0;
+	-fx-border-color: darkcyan;
+}
+.combo-box{
+	-fx-background-color: darkcyan; -fx-text-fill: white;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
