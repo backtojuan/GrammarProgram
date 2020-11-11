@@ -71,12 +71,12 @@ public class GrammarProgramController {
      * This method allows to change the state of the gui controls so the user cannot enter a different initial information unless
      * they execute the CYK algorithm and start the processing of creating another grammar
      */
-    private void changeInitialInformationToState(boolean state) {    
-    	stringInput.setEditable(state);
-    	initialSymbolInput.setEditable(state);
-    	terminalsInput.setEditable(state);
-    	symbolsInput.setEditable(state);
-    	informationButton.setDisable(state);
+    private void changeInitialInformationToState(boolean tfstate, boolean bttstate) {    
+    	stringInput.setEditable(tfstate);
+    	initialSymbolInput.setEditable(tfstate);
+    	terminalsInput.setEditable(tfstate);
+    	symbolsInput.setEditable(tfstate);
+    	informationButton.setDisable(bttstate);
     }
 //__________________________________________________________________________________________________________________________________
     /**
@@ -87,6 +87,18 @@ public class GrammarProgramController {
     	headOfProduction.setDisable(state);
     	BodyOfProduction.setDisable(state);
     	addProductionButton.setDisable(state);    	    	
+    }
+//__________________________________________________________________________________________________________________________________
+    private void resetForm() {
+    	stringInput.clear();
+    	initialSymbolInput.clear();
+    	terminalsInput.clear();
+    	symbolsInput.clear();
+    	changeInitialInformationToState(true,false);
+    	
+    	headOfProduction.clear();
+    	BodyOfProduction.clear();
+    	changeProductionRulesInformationToState(true);
     }
 //__________________________________________________________________________________________________________________________________
     @FXML
@@ -153,7 +165,7 @@ public class GrammarProgramController {
     		grammar = new Grammar(initialSymbol);
     		grammar.addTerminal(terminals);
     		grammar.addSymbol(symbols);
-    		changeInitialInformationToState(true);
+    		changeInitialInformationToState(false,true);
     		changeProductionRulesInformationToState(false);
     		showCorrect("initial information succesfully added" + "\n" + "now, let's add some production rules");
     	}
@@ -181,7 +193,8 @@ public class GrammarProgramController {
 //__________________________________________________________________________________________________________________________________
     @FXML
     private void startCYKAlgorithm(ActionEvent event) {
-
+    	showCorrect("CYK algorithm successfully executed" + "\n" + "Check the results on the resume tab");
+    	resetForm();
     }
 //__________________________________________________________________________________________________________________________________
 }
