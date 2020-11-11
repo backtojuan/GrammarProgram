@@ -64,64 +64,65 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label text="CONTEXT-FREE GRAMMAR SPECIFICATIONS" GridPane.rowIndex="2">
+                                    <Label text="CONTEXT-FREE GRAMMAR SPECIFICATIONS" underline="true" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets left="25.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label text="Enter the string" GridPane.rowIndex="6">
+                                    <Label text="Enter the string" GridPane.rowIndex="7">
                                        <GridPane.margin>
                                           <Insets left="75.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label prefHeight="18.0" prefWidth="345.0" text="(remember it has to be in CNF, Chomsky Normal Form)" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label prefHeight="18.0" prefWidth="345.0" text="(remember it has to be in CNF, Chomsky Normal Form)" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets left="35.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField fx:id="stringInput" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <TextField fx:id="stringInput" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                        <GridPane.margin>
                                           <Insets left="25.0" right="100.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Label text="Enter the initial symbol" GridPane.rowIndex="7">
+                                    <Label text="Enter the initial symbol" GridPane.rowIndex="8">
                                        <GridPane.margin>
                                           <Insets left="75.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label text="Enter the terminals" GridPane.rowIndex="9">
+                                    <Label text="Enter the terminals" GridPane.rowIndex="10">
                                        <GridPane.margin>
                                           <Insets left="75.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label text="Enter the symbols" GridPane.rowIndex="10">
+                                    <Label text="Enter the symbols" GridPane.rowIndex="11">
                                        <GridPane.margin>
                                           <Insets left="75.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField fx:id="initialSymbolInput" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                    <TextField fx:id="initialSymbolInput" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                        <GridPane.margin>
                                           <Insets left="25.0" right="100.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField fx:id="terminalsInput" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                    <TextField fx:id="terminalsInput" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                        <GridPane.margin>
                                           <Insets left="25.0" right="100.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField fx:id="symbolsInput" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                    <TextField fx:id="symbolsInput" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                        <GridPane.margin>
                                           <Insets left="25.0" right="100.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Button fx:id="informationButton" mnemonicParsing="false" onAction="#addInitialInformation" text="Add" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                    <Button fx:id="informationButton" mnemonicParsing="false" onAction="#addInitialInformation" text="Add" GridPane.columnIndex="2" GridPane.rowIndex="11">
                                        <GridPane.margin>
                                           <Insets left="35.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Label text="STRING, TERMINAL &amp; SYMBOLS" GridPane.rowIndex="4">
+                                    <Label text="STRING, TERMINAL &amp; SYMBOLS" underline="true" GridPane.rowIndex="5">
                                        <GridPane.margin>
                                           <Insets left="75.0" />
                                        </GridPane.margin>
@@ -131,10 +132,10 @@
                                           <Image url="@../../../AutomatonProgram/src/gui/imgs/Log%20Out.png" />
                                        </image>
                                        <GridPane.margin>
-                                          <Insets left="30.0" top="30.0" />
+                                          <Insets left="30.0" top="65.0" />
                                        </GridPane.margin>
                                     </ImageView>
-                                    <Label text="separate with &quot;,&quot; the terminals and the symbols" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                    <Label text="separate with &quot;,&quot; the terminals and the symbols" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                        <GridPane.margin>
                                           <Insets left="25.0" />
                                        </GridPane.margin>
@@ -146,9 +147,9 @@
                               <GridPane BorderPane.alignment="CENTER">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.20001220703125" minWidth="10.0" prefWidth="160.40001220703124" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.3999481201172" minWidth="10.0" prefWidth="144.8" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.19992065429688" minWidth="10.0" prefWidth="157.6000183105469" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.2000366210938" minWidth="10.0" prefWidth="150.39995117187505" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.3999481201172" minWidth="10.0" prefWidth="64.60005187988281" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.19992065429688" minWidth="10.0" prefWidth="159.99997558593748" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.2000366210938" minWidth="10.0" prefWidth="228.80002441406248" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.199951171875" minWidth="10.0" prefWidth="106.40004882812502" />
                                  </columnConstraints>
                                  <rowConstraints>
@@ -159,7 +160,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label text="PRODUCTION RULES" GridPane.rowIndex="1">
+                                    <Label text="PRODUCTION RULES" underline="true" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="25.0" />
                                        </GridPane.margin>
@@ -171,24 +172,29 @@
                                     </Label>
                                     <TextField fx:id="headOfProduction" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
-                                          <Insets left="25.0" right="25.0" />
+                                          <Insets left="10.0" right="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Label text="Body of the production" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                    <Label text="Bodies of the productions" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                        <GridPane.margin>
-                                          <Insets left="25.0" />
+                                          <Insets left="15.0" />
                                        </GridPane.margin>
                                     </Label>
                                     <TextField fx:id="BodyOfProduction" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                        <GridPane.margin>
-                                          <Insets left="25.0" right="25.0" />
+                                          <Insets left="15.0" right="15.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Button mnemonicParsing="false" onAction="#addProductionRule" text="Add" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                    <Button fx:id="addProductionButton" mnemonicParsing="false" onAction="#addProductionRule" text="Add" GridPane.columnIndex="4" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets left="30.0" />
                                        </GridPane.margin>
                                     </Button>
+                                    <Label text="separate with &quot;,&quot; each body" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="15.0" left="45.0" />
+                                       </GridPane.margin>
+                                    </Label>
                                  </children>
                               </GridPane>
                            </center>

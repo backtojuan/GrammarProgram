@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,9 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AutomatonProgramController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GrammarProgramController">
    <children>
-      <TabPane prefHeight="564.0" prefWidth="754.0" side="LEFT" stylesheets="@../../../AutomatonProgram/src/gui/css/AutomatonProgramTheme.css" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="564.0" prefWidth="754.0" side="LEFT" stylesheets="@css/GrammarProgramTheme.css" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="Grammar">
                <content>
@@ -33,11 +34,12 @@
                                  <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="cykButton" mnemonicParsing="false" onAction="#startCYKAlgorithm" stylesheets="@../../../AutomatonProgram/src/gui/css/AutomatonProgramTheme.css" text="Generate Minimum Automaton" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="cykButton" mnemonicParsing="false" onAction="#startCYKAlgorithm" stylesheets="@../../../AutomatonProgram/src/gui/css/AutomatonProgramTheme.css" text="Start CYK decision algorithm" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
-                                          <Insets left="25.0" />
+                                          <Insets left="40.0" />
                                        </GridPane.margin>
                                     </Button>
                                  </children>
@@ -46,9 +48,9 @@
                            <top>
                               <GridPane BorderPane.alignment="CENTER">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.9999755859375" minWidth="10.0" prefWidth="283.8000122070313" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="479.20001220703125" minWidth="10.0" prefWidth="350.1999877929687" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="479.20001220703125" minWidth="10.0" prefWidth="125.20000610351565" />
                                  </columnConstraints>
                                  <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -58,19 +60,84 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <ImageView fitHeight="46.0" fitWidth="50.0" onMouseClicked="#exitSystem" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <Label text="CONTEXT-FREE GRAMMAR SPECIFICATIONS" underline="true" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="Enter the string" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets left="75.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label prefHeight="18.0" prefWidth="345.0" text="(remember it has to be in CNF, Chomsky Normal Form)" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="35.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="stringInput" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" right="100.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="Enter the initial symbol" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets left="75.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="Enter the terminals" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets left="75.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="Enter the symbols" GridPane.rowIndex="11">
+                                       <GridPane.margin>
+                                          <Insets left="75.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="initialSymbolInput" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" right="100.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="terminalsInput" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" right="100.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="symbolsInput" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" right="100.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="informationButton" mnemonicParsing="false" onAction="#addInitialInformation" text="Add" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                                       <GridPane.margin>
+                                          <Insets left="35.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label text="STRING, TERMINAL &amp; SYMBOLS" underline="true" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets left="75.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <ImageView fitHeight="46.0" fitWidth="50.0" onMouseClicked="#exitSystem" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                                        <image>
                                           <Image url="@../../../AutomatonProgram/src/gui/imgs/Log%20Out.png" />
                                        </image>
                                        <GridPane.margin>
-                                          <Insets left="100.0" top="25.0" />
+                                          <Insets left="30.0" top="65.0" />
                                        </GridPane.margin>
                                     </ImageView>
-                                    <Label text="Select the type of the automaton" GridPane.rowIndex="1">
+                                    <Label text="separate with &quot;,&quot; the terminals and the symbols" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                        <GridPane.margin>
-                                          <Insets left="50.0" />
+                                          <Insets left="25.0" />
                                        </GridPane.margin>
                                     </Label>
                                  </children>
@@ -79,47 +146,55 @@
                            <center>
                               <GridPane BorderPane.alignment="CENTER">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.20001220703125" minWidth="10.0" prefWidth="160.40001220703124" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.3999481201172" minWidth="10.0" prefWidth="64.60005187988281" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.19992065429688" minWidth="10.0" prefWidth="159.99997558593748" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.2000366210938" minWidth="10.0" prefWidth="228.80002441406248" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.199951171875" minWidth="10.0" prefWidth="106.40004882812502" />
                                  </columnConstraints>
                                  <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <GridPane GridPane.rowIndex="1">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
-                                    <GridPane>
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
+                                    <Label text="PRODUCTION RULES" underline="true" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label text="Head of the production" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="headOfProduction" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="Bodies of the productions" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="15.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="BodyOfProduction" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="15.0" right="15.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button fx:id="addProductionButton" mnemonicParsing="false" onAction="#addProductionRule" text="Add" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="30.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Label text="separate with &quot;,&quot; each body" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="15.0" left="45.0" />
+                                       </GridPane.margin>
+                                    </Label>
                                  </children>
                               </GridPane>
                            </center>
@@ -136,7 +211,7 @@
                            <top>
                               <Label text="CYK Result" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>
-                                    <Insets left="20.0" top="50.0" />
+                                    <Insets bottom="25.0" top="50.0" />
                                  </BorderPane.margin>
                                  <font>
                                     <Font size="25.0" />
@@ -146,14 +221,37 @@
                            <center>
                               <GridPane BorderPane.alignment="CENTER">
                                  <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="585.4" minWidth="10.0" prefWidth="585.4" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.20001220703125" minWidth="10.0" prefWidth="134.19999999999993" />
                                  </columnConstraints>
                                  <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="233.59998168945313" minHeight="10.0" prefHeight="64.20001220703125" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="233.59998168945313" minHeight="10.0" prefHeight="64.20001220703125" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="417.60001983642576" minHeight="10.0" prefHeight="70.59998779296876" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="417.60001983642576" minHeight="10.0" prefHeight="398.4" vgrow="SOMETIMES" />
                                  </rowConstraints>
+                                 <children>
+                                    <Label prefHeight="30.0" prefWidth="518.0" text="¿Does belong the given String to the language generated by the given context-free grammar?">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="belongsToLanguage" text="-----" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="55.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label prefHeight="30.0" prefWidth="518.0" text="RESULTANT TABLE" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="25.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="resultantTable" text="-/-/-/-/" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="300.0" left="25.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                 </children>
                               </GridPane>
                            </center>
                         </BorderPane>
@@ -173,6 +271,11 @@
                               <Insets />
                            </opaqueInsets>
                         </Label>
+                        <ImageView fitHeight="210.0" fitWidth="223.0" layoutX="248.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/letter.gif" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </content>

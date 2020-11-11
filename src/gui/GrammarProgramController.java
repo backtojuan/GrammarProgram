@@ -3,6 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
+import model.Grammar;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,6 +35,9 @@ public class GrammarProgramController {
 
     @FXML
     private Button informationButton;
+    
+    @FXML
+    private Button addProductionButton;
 
     @FXML
     private TextField headOfProduction;
@@ -49,14 +53,49 @@ public class GrammarProgramController {
     
     @FXML
     private Alert alert;
+    
+    private Grammar grammar;
 
 //__________________________________________________________________________________________________________________________________
     @FXML
     /**
      * This method initializes the elements before the stage is load.
      */
-    private void initialize() {
-    	
+    private void initialize() {    	
+    	//production part is not enable until the initial information is first entered by the user
+    	changeProductionRulesInformationToState(true);
+    	alert = new Alert(AlertType.NONE);    
+    }
+//__________________________________________________________________________________________________________________________________
+    /**
+     * This method allows to change the state of the gui controls so the user cannot enter a different initial information unless
+     * they execute the CYK algorithm and start the processing of creating another grammar
+     */
+    private void changeInitialInformationToState(boolean state) {    
+    	stringInput.setEditable(state);
+    	initialSymbolInput.setEditable(state);
+    	terminalsInput.setEditable(state);
+    	symbolsInput.setEditable(state);
+    	informationButton.setDisable(state);
+    }
+//__________________________________________________________________________________________________________________________________
+    /**
+     * This method allows to change the state of the gui controls so the user cannot enter more production rules to the grammar unless
+     * they execute the CYK algorithm and start the processing of creating another grammar
+     */
+    private void changeProductionRulesInformationToState(boolean state) {    	    	        	
+    	headOfProduction.setDisable(state);
+    	BodyOfProduction.setDisable(state);
+    	addProductionButton.setDisable(state);    	    	
+    }
+//__________________________________________________________________________________________________________________________________
+    @FXML
+    /**
+     * This method ends the session of the application.
+     * @param event the event triggered by the user.
+     */
+    private void exitSystem(MouseEvent event) {
+    	System.exit(0);
     }
 //__________________________________________________________________________________________________________________________________    
     /**
@@ -102,22 +141,42 @@ public class GrammarProgramController {
     }
 //__________________________________________________________________________________________________________________________________
     @FXML
+    /**
+     * This method allows to add the initial information to build up the grammar: 
+     * @param event the event triggered by the user
+     */
     private void addInitialInformation(ActionEvent event) {
-
-    }
-//__________________________________________________________________________________________________________________________________
-    @FXML
-    private void addProductionRule(ActionEvent event) {
-
+    	String initialSymbol = initialSymbolInput.getText();
+    	String terminals = terminalsInput.getText();
+    	String symbols = symbolsInput.getText();
+    	if(!stringInput.getText().isEmpty() && !initialSymbol.isEmpty() && !terminals.isEmpty() && !symbols.isEmpty()) {
+    		grammar = new Grammar(initialSymbol);
+    		grammar.addTerminal(terminals);
+    		grammar.addSymbol(symbols);
+    		changeInitialInformationToState(true);
+    		changeProductionRulesInformationToState(false);
+    		showCorrect("initial information succesfully added" + "\n" + "now, let's add some production rules");
+    	}
+    	else {
+    		showError("None of these fields can be empty, all fields are mandatory");
+    	}
     }
 //__________________________________________________________________________________________________________________________________
     @FXML
     /**
-     * This method ends the session of the application.
-     * @param event the event triggered by the user.
+     * This method allows to add a new production rule to the grammar
+     * @param event the even triggered by the user
      */
-    private void exitSystem(MouseEvent event) {
-    	System.exit(0);
+    private void addProductionRule(ActionEvent event) {
+    	String head = headOfProduction.getText();
+    	String bodies = BodyOfProduction.getText();
+    	if(!head.isEmpty()) {
+    		grammar.addProductionRule(bodies, bodies);
+    		showCorrect("Production rule succesfully added" + "\n" + "Let's add another one" + "\n" + "or Let's start with CYK process");
+    	}
+    	else {
+    		showError("Head of the production cannot be empty");
+    	}
     }
 //__________________________________________________________________________________________________________________________________
     @FXML
