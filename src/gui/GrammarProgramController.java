@@ -3,13 +3,13 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
-import model.Grammar;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import model.*;
 //__________________________________________________________________________________________________________________________________
 /**
  * This class manage the necessary attributes and methods to manage and use the automaton program gui. 
@@ -46,6 +46,9 @@ public class GrammarProgramController {
     private TextField BodyOfProduction;
 
     @FXML
+    private Label resultInput;
+    
+    @FXML
     private Label belongsToLanguage;
 
     @FXML
@@ -55,6 +58,7 @@ public class GrammarProgramController {
     private Alert alert;
     
     private Grammar grammar;
+    private CYK cyk;
 
 //__________________________________________________________________________________________________________________________________
     @FXML
@@ -70,6 +74,8 @@ public class GrammarProgramController {
     /**
      * This method allows to change the state of the gui controls so the user cannot enter a different initial information unless
      * they execute the CYK algorithm and start the processing of creating another grammar
+     * @param tfstate defines whether the text fields must be editable or not
+     * @param bttstate defines whether the buttons must be disable or not
      */
     private void changeInitialInformationToState(boolean tfstate, boolean bttstate) {    
     	stringInput.setEditable(tfstate);
@@ -82,6 +88,7 @@ public class GrammarProgramController {
     /**
      * This method allows to change the state of the gui controls so the user cannot enter more production rules to the grammar unless
      * they execute the CYK algorithm and start the processing of creating another grammar
+     * @param state defines wether the controls must be disable or not
      */
     private void changeProductionRulesInformationToState(boolean state) {    	    	        	
     	headOfProduction.setDisable(state);
@@ -89,6 +96,9 @@ public class GrammarProgramController {
     	addProductionButton.setDisable(state);    	    	
     }
 //__________________________________________________________________________________________________________________________________
+    /**
+     * This method allows to reset the form so the user can start the process of creating a new grammar.
+     */
     private void resetForm() {
     	stringInput.clear();
     	initialSymbolInput.clear();
@@ -160,7 +170,7 @@ public class GrammarProgramController {
     private void addInitialInformation(ActionEvent event) {
     	String initialSymbol = initialSymbolInput.getText();
     	String terminals = terminalsInput.getText();
-    	String symbols = symbolsInput.getText();
+    	String symbols = symbolsInput.getText();    	
     	if(!stringInput.getText().isEmpty() && !initialSymbol.isEmpty() && !terminals.isEmpty() && !symbols.isEmpty()) {
     		grammar = new Grammar(initialSymbol);
     		grammar.addTerminal(terminals);
@@ -183,8 +193,8 @@ public class GrammarProgramController {
     	String head = headOfProduction.getText();
     	String bodies = BodyOfProduction.getText();
     	if(!head.isEmpty()) {
-    		grammar.addProductionRule(bodies, bodies);
-    		showCorrect("Production rule succesfully added" + "\n" + "Let's add another one" + "\n" + "or Let's start with CYK process");
+    		grammar.addProductionRule(head, bodies);
+    		//showCorrect("Production rule succesfully added" + "\n" + "Let's add another one" + "\n" + "or Let's start with CYK process");
     	}
     	else {
     		showError("Head of the production cannot be empty");
@@ -192,9 +202,23 @@ public class GrammarProgramController {
     }
 //__________________________________________________________________________________________________________________________________
     @FXML
+    /**
+     * This method allows to run the CYK algorithm over the grammar the user just created. 
+     * @param event the event triggered by the user
+     */
     private void startCYKAlgorithm(ActionEvent event) {
-    	showCorrect("CYK algorithm successfully executed" + "\n" + "Check the results on the resume tab");
-    	resetForm();
+    	if(!stringInput.getText().isEmpty() && grammar != null && !grammar.getProductionRules().isEmpty()) {
+	    	cyk = new CYK(stringInput.getText());
+	    	boolean confirmation = cyk.CYKAlgorithm(stringInput.getText(), grammar);
+	    	resultInput.setText(stringInput.getText());
+	    	belongsToLanguage.setText("" + confirmation);
+	    	resultantTable.setText("");
+	    	showCorrect("CYK algorithm succcessfully executed" + "\n" + "Check the results on the resume tab");
+	    	resetForm();
+    	}
+    	else {
+    		showWarning("Hold on! you cannot run the CYK unless you've created" + "\n" + "a proper grammar with production rules");
+    	}
     }
 //__________________________________________________________________________________________________________________________________
 }
