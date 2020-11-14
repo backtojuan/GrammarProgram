@@ -34,13 +34,17 @@ ________________________________________________________________________________
 
    ![createGrammar(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/createGrammar(3).jpg)
 
+   ![createGrammar(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/createGrammar(4).jpg)
+
+   ![createGrammar(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/createGrammar(5).jpg)
+
    In the first section, you must need to enter the following: 
 
-   ​	The input string (a non empty string to be checked from the grammar and that it's required for the CYK algorithm)
+   ​	The input string (a non empty string to be checked from the grammar and that it's required for the CYK algorithm) If you want to 	check the lambda symbol you must type "lambda".
 
    ​	The initial symbol (this specifies which is the first symbol that starts the production rules for the grammar. It's usually "S")
 
-   ​	The set of terminals (this specifies which elements made up part of the terminals set for the grammar, separate each terminal by 	"," the program will do the rest)
+   ​	The set of terminals (this specifies which elements made up part of the terminals set for the grammar, separate each terminal by 	"," the program will do the rest. Remember "lambda" can be a terminal). 
 
    ​	The set of symbols (this specified which elements made up part of the symbols set for the grammar, separate each symbol by "," 	the program will do the rest)
 
@@ -50,13 +54,19 @@ ________________________________________________________________________________
 
    ![addProductionRule(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/addProductionRule(1).jpg)
 
-   ![addProductionRule(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/addProductionRule(1).jpg)
+   ![addProductionRule(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/addProductionRule(2).jpg)
 
-   In the second section, you must need to enter the head of the particular production you're adding, then in the body section you need to specify each body of the different productions rules. Look at the example above. You can add as much productions rules as the grammar contains,Once you have entered all your production rules you can now run the CYK algorithm.
+   ![addProductionRule(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/addProductionRule(3).jpg)
+
+   ![addProductionRule(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/addProductionRule(4).jpg)
+
+   In the second section, you must need to enter the head of the particular production you're adding, then in the body section you need to specify each body of the different productions rules (remember "lambda" can be a part of a body production). Look at the example above. You can add as much productions rules as the grammar contains,Once you have entered all your production rules you can now run the CYK algorithm.
 
 7. To start the CYK algorithm:
 
    ![runCYKAlgorithm(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/runCYKAlgorithm(1).jpg)
+
+   ![runCYKAlgorithm(1)](https://github.com/backtojuan/GrammarProgram/blob/master/overview/runCYKAlgorithm(2).jpg)
 
    To run the CYK algorithm, you just need to press the button "Start CYK decision algorithm" once done, on the CYK resume tab you will see the results of the execution.
 

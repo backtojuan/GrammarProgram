@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -246,11 +247,6 @@
                                           <Insets left="25.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label fx:id="resultantTable" text="-/-/-/-/" GridPane.rowIndex="3">
-                                       <GridPane.margin>
-                                          <Insets bottom="300.0" left="25.0" />
-                                       </GridPane.margin>
-                                    </Label>
                                     <Label prefHeight="30.0" prefWidth="518.0" text="STRING INPUT">
                                        <GridPane.margin>
                                           <Insets left="25.0" />
@@ -261,6 +257,7 @@
                                           <Insets left="15.0" />
                                        </GridPane.margin>
                                     </Label>
+                                    <TableView fx:id="resultantTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
                            </center>

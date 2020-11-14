@@ -14,6 +14,8 @@ public class Grammar {
 	private List<String> terminals;
 	private List<String> symbols;
 	private HashMap<String, ArrayList<String>> productionRules;
+	
+	public final static String LAMBDA = "lambda";
 //__________________________________________________________________________________________________________________________________
 	/**
 	 * <b>Grammar constructor</b> 

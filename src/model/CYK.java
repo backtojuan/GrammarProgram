@@ -8,7 +8,7 @@ package model;
  *
  */
 public class CYK {
-	private String string;
+	private String string;	
 	private String[][] CYKTable;
 //__________________________________________________________________________________________________________________________________	
 	/**
@@ -46,9 +46,12 @@ public class CYK {
 	 * @return a boolean value
 	 */
 	public boolean CYKAlgorithm(String string, Grammar grammar) {
-		
+		if(string.equalsIgnoreCase(Grammar.LAMBDA)) {  
+			//if the input string is "lambda" the only production it needs to be checked it's 'S'
+			return grammar.getProductionRules().get(grammar.getInitialSymbol()).contains(string);
+		}		
 		boolean confirmation = false;
-		String[] terminals = string.split("");
+		/**String[] terminals = string.split("");
 		int n = string.length();
 		int j = 1;
 		
@@ -58,7 +61,7 @@ public class CYK {
 					CYKTable[i][0] = grammar.getSymbols().get(s);
 				}
 			}
-		}							
+		}					*/		
 		return confirmation;
 	}
 //__________________________________________________________________________________________________________________________________
