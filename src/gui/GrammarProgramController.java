@@ -1,16 +1,12 @@
 //__________________________________________________________________________________________________________________________________
 package gui;
 import javafx.fxml.FXML;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
@@ -57,7 +53,7 @@ public class GrammarProgramController {
 	private Label belongsToLanguage;
 	
     @FXML
-    private TableView<String> resultantTable;
+    private TextArea resultantTable;
 	
 	@FXML
 	private Alert alert;
@@ -73,6 +69,7 @@ public class GrammarProgramController {
 	private void initialize() {    	
 		//production part is not enable until the initial information is first entered by the user
 		changeProductionRulesInformationToState(true);
+		resultantTable.setEditable(false);
 		alert = new Alert(AlertType.NONE);    
 	}
 //__________________________________________________________________________________________________________________________________
@@ -114,23 +111,6 @@ public class GrammarProgramController {
 		headOfProduction.clear();
 		BodyOfProduction.clear();
 		changeProductionRulesInformationToState(true);		
-	}
-	/**
-	 * This method adds a new column to the resultant table of the cyk algorithm
-	 * @param header the name for this column
-	 */
-	private void addColumn(String header) {
-		TableColumn<String, String> lambda = new TableColumn<>(header);
-		lambda.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()));				
-		resultantTable.getColumns().add(lambda);	
-	}
-//__________________________________________________________________________________________________________________________________
-	/**
-	 * This method set the content of the resultant table of the cyk algorithm
-	 * @param items the items to be inserted
-	 */
-	private void setContent(ObservableList<String> items) {
-		resultantTable.setItems(items);
 	}
 //__________________________________________________________________________________________________________________________________
 	@FXML
@@ -229,23 +209,28 @@ public class GrammarProgramController {
 	 * @param event the event triggered by the user
 	 */
 	private void startCYKAlgorithm(ActionEvent event) {
-		if(!stringInput.getText().isEmpty() && grammar != null && !grammar.getProductionRules().isEmpty()) {
-			cyk = new CYK(stringInput.getText());
-			boolean confirmation = cyk.CYKAlgorithm(stringInput.getText(), grammar);
-			resultInput.setText(stringInput.getText());
-			belongsToLanguage.setText("" + confirmation);
-			if(stringInput.getText().equalsIgnoreCase(Grammar.LAMBDA) && confirmation) {
-				addColumn(cyk.getStringInput());
-				setContent(FXCollections.observableArrayList(grammar.getInitialSymbol()));								
-	    	}
+		try {
+			if(!stringInput.getText().isEmpty() && grammar != null && !grammar.getProductionRules().isEmpty()) {
+				cyk = new CYK(stringInput.getText());
+				boolean confirmation = cyk.CYKAlgorithm(stringInput.getText(), grammar);
+				resultInput.setText(stringInput.getText());
+				belongsToLanguage.setText("" + confirmation);
+				if(stringInput.getText().equalsIgnoreCase(Grammar.LAMBDA) && confirmation) {
+					resultantTable.setText("---------------" + "\n" + "lambda" + "\n" + "---------------" + "\n" +
+										"{" + grammar.getInitialSymbol() + "}" + "\n" + "---------------");
+		    	}
+				else {
+					resultantTable.setText(cyk.printTable());								
+				}			
+				showCorrect("CYK algorithm succcessfully executed" + "\n" + "Check the results on the resume tab");
+				resetForm();	    	
+			}
 			else {
-				
-			}			
-			showCorrect("CYK algorithm succcessfully executed" + "\n" + "Check the results on the resume tab");
-			resetForm();	    	
+				showWarning("Hold on! you cannot run the CYK unless you've created" + "\n" + "a proper grammar with production rules");
+			}
 		}
-		else {
-			showWarning("Hold on! you cannot run the CYK unless you've created" + "\n" + "a proper grammar with production rules");
+		catch(NullPointerException npe) {
+			showError("You're missing a production!!" + "\n" + "check if every symbol has at least one production");
 		}
 	}
 //__________________________________________________________________________________________________________________________________

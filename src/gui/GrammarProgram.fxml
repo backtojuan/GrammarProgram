@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -257,7 +257,7 @@
                                           <Insets left="15.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TableView fx:id="resultantTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                                    <TextArea fx:id="resultantTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
                            </center>

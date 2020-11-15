@@ -46,7 +46,7 @@ ________________________________________________________________________________
 
    ​	The set of terminals (this specifies which elements made up part of the terminals set for the grammar, separate each terminal by 	"," the program will do the rest. Remember "lambda" can be a terminal). 
 
-   ​	The set of symbols (this specified which elements made up part of the symbols set for the grammar, separate each symbol by "," 	the program will do the rest)
+   ​	The set of symbols (this specified which elements made up part of the symbols set for the grammar, separate each symbol by "," 	the program will do the rest) Remember 'S' is also part of the symbols set.
 
    If everything is right you can click on the button "add" to start adding the production rules. Once added you cannot overwrite the information you entered, be careful!
 
